@@ -42,7 +42,11 @@ defmodule TRC.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:gen_rmq, "~> 4.0"},
+      {:broadway, "~> 1.0"},
+      {:broadway_rabbitmq, "~> 0.7.0"},
+      {:amqp, "~> 3.1"}
     ]
   end
 

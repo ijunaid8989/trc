@@ -7,6 +7,9 @@ defmodule TRC.Application do
 
   @impl true
   def start(_type, _args) do
+    publisher = TRC.Events.RmqPublisher
+    publisher_opts = Application.get_env(:trc, publisher)
+
     children = [
       # Start the Ecto repository
       TRC.Repo,
@@ -15,7 +18,9 @@ defmodule TRC.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: TRC.PubSub},
       # Start the Endpoint (http/https)
-      TRCWeb.Endpoint
+      TRCWeb.Endpoint,
+      {publisher, Keyword.put_new(publisher_opts, :name, publisher)},
+      {TRC.Events, [publisher: publisher]}
       # Start a worker by calling: TRC.Worker.start_link(arg)
       # {TRC.Worker, arg}
     ]
