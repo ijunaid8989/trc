@@ -47,6 +47,6 @@ defmodule TRC.Events.RmqPublisher do
 
     AMQP.Channel.close(channel)
     AMQP.Connection.close(connection)
-    #RMQ Publisher will have its own connection and channel
+    # RMQ Publisher will have its own connection and channel
   end
 end
