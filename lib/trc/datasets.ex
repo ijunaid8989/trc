@@ -7,4 +7,8 @@ defmodule TRC.Datasets do
   alias TRC.Repo
 
   alias TRC.Datasets.Twitch
+
+  alias TRC.Datasets.MemeGen
+
+  alias TRC.Datasets.CollisionElectron
 end

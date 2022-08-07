@@ -13,7 +13,8 @@ defmodule TRC.Repo.Migrations.CreateTwitch do
       timestamps()
     end
 
-    create unique_index(:twitch, [:channel])
-    create index(:twitch, [:oid])
+    create unique_index(:twitch, [:channel, :oid])
+
+    create index(:twitch, [:channel])
   end
 end
