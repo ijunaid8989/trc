@@ -46,7 +46,8 @@ defmodule TRC.MixProject do
       {:gen_rmq, "~> 4.0"},
       {:broadway, "~> 1.0"},
       {:broadway_rabbitmq, "~> 0.7.0"},
-      {:amqp, "~> 3.1"}
+      {:amqp, "~> 3.1"},
+      {:nimble_csv, "~> 1.1"}
     ]
   end
 

@@ -8,7 +8,7 @@ defmodule TRC.Events.MessageEncoder do
   def encode!(event, payload) do
     Jason.encode!(%{
       event: event,
-      payload: %{name: "Junaid"},
+      payload: payload,
       published_at: DateTime.utc_now()
     })
   end

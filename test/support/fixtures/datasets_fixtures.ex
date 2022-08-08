@@ -38,7 +38,8 @@ defmodule TRC.DatasetsFixtures do
         meme_id: 42,
         meme_page_url: "some meme_page_url"
       })
-      |> TRC.Datasets.create_meme_gen()
+
+    # |> TRC.Datasets.create_meme_gen()
 
     meme_gen
   end
@@ -60,7 +61,8 @@ defmodule TRC.DatasetsFixtures do
         run: 42,
         transverse_momentum: %{}
       })
-      |> TRC.Datasets.create_collision_electron()
+
+    # |> TRC.Datasets.create_collision_electron()
 
     collision_electron
   end

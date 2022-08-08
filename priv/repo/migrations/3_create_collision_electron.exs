@@ -8,7 +8,7 @@ defmodule TRC.Repo.Migrations.CreateCollisionElectron do
       add :run, :bigint
       add :energy, :map
       add :momemtum, :map
-      add :transverse_momentum, :map
+      add :transverse_momemtum, :map
       add :pseudorapidity, :map
       add :phi_angle, :map
       add :charge, :map
