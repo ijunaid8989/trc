@@ -49,18 +49,20 @@ defmodule TRC.Streamer do
          ], acc}
     end)
     |> Stream.map(fn item ->
-      payload = event_to_struct(event, item)
+      payload = parse_event(event, item)
       Events.publish(event, payload)
     end)
     |> Stream.run()
+
+    move_source(path)
   end
 
-  defp event_to_struct("twitch", item) do
+  defp parse_event("twitch", item) do
     %{
       channel: item["Channel"],
       language: item["Language"],
-      mature: item["Mature"],
-      partnered: item["Partnered"],
+      mature: true_false(item["Mature"]),
+      partnered: true_false(item["Partnered"]),
       metadata: %{
         watch_time: item["Watch time(Minutes)"],
         stream_time: item["Stream time(minutes)"],
@@ -73,7 +75,7 @@ defmodule TRC.Streamer do
     }
   end
 
-  defp event_to_struct("memegen", item) do
+  defp parse_event("memegen", item) do
     %{
       alternate_text: item["Alternate Text"],
       archived_url: item["Archived URL"],
@@ -85,7 +87,7 @@ defmodule TRC.Streamer do
     }
   end
 
-  defp event_to_struct("collisionelectron", item) do
+  defp parse_event("collisionelectron", item) do
     %{
       event: item["Event"],
       run: item["Run"],
@@ -124,4 +126,11 @@ defmodule TRC.Streamer do
   defp event("datasets/collisionelectrondata/dielectron.csv"), do: "collisionelectron"
   defp event("datasets/memegenerator/memegenerator.csv"), do: "memegen"
   defp event("datasets/twitchdata/twitchdata-update.csv"), do: "twitch"
+
+  defp true_false("True"), do: true
+  defp true_false(_), do: false
+
+  defp move_source(path) do
+    File.rename()
+  end
 end

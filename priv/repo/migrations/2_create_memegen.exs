@@ -5,12 +5,12 @@ defmodule TRC.Repo.Migrations.CreateMemegen do
     create table(:memegen) do
       add :oid, :uuid, unique: true, null: false
       add :meme_id, :bigint
-      add :archived_url, :string
+      add :archived_url, :text
       add :base_meme_name, :string
-      add :meme_page_url, :string
+      add :meme_page_url, :text
       add :md5_hash, :string
       add :file_size, :bigint
-      add :alternate_text, :string
+      add :alternate_text, :text
 
       timestamps()
     end
