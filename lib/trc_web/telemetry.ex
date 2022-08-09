@@ -30,6 +30,34 @@ defmodule TRCWeb.Telemetry do
         unit: {:native, :millisecond}
       ),
 
+      # Redis cache stats
+      last_value("cache.stats.hits", tags: [:env, :otp_app, :cache]),
+      last_value("cache.stats.misses", tags: [:env, :otp_app, :cache]),
+      last_value("cache.stats.writes", tags: [:env, :otp_app, :cache]),
+      last_value("cache.stats.updates", tags: [:env, :otp_app, :cache]),
+      last_value("cache.stats.evictions", tags: [:env, :otp_app, :cache]),
+      last_value("cache.stats.expirations", tags: [:env, :otp_app, :cache]),
+      last_value("cache.info.size", tags: [:env, :otp_app, :cache]),
+
+      # Redis cache commands
+      summary("cache.command.stop.duration",
+        unit: {:native, :millisecond},
+        tags: [:env, :otp_app, :function_name]
+      ),
+      summary("cache.command.exception.duration",
+        unit: {:native, :millisecond},
+        tags: [:env, :otp_app, :function_name]
+      ),
+
+      # Local cache stats
+      last_value("cache.local.stats.hits", tags: [:env, :otp_app, :cache]),
+      last_value("cache.local.stats.misses", tags: [:env, :otp_app, :cache]),
+      last_value("cache.local.stats.writes", tags: [:env, :otp_app, :cache]),
+      last_value("cache.local.stats.updates", tags: [:env, :otp_app, :cache]),
+      last_value("cache.local.stats.evictions", tags: [:env, :otp_app, :cache]),
+      last_value("cache.local.stats.expirations", tags: [:env, :otp_app, :cache]),
+      last_value("cache.local.info.size", tags: [:env, :otp_app, :cache]),
+
       # Database Metrics
       summary("trc.repo.query.total_time",
         unit: {:native, :millisecond},
@@ -63,9 +91,10 @@ defmodule TRCWeb.Telemetry do
 
   defp periodic_measurements do
     [
-      # A module, function and arguments to be invoked periodically.
-      # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {TRCWeb, :count_users, []}
+      {TRC.Cache, :dispatch_stats, []},
+      {TRC.Cache, :dispatch_cache_info, []},
+      {TRC.Cache.Local, :dispatch_stats, []},
+      {TRC.Cache.Local, :dispatch_cache_info, []}
     ]
   end
 end

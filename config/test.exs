@@ -23,5 +23,9 @@ config :trc, TRCWeb.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
+config :trc, TRC.Cache,
+  stats: true,
+  gc_interval: :timer.hours(12)
+
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime

@@ -48,7 +48,12 @@ defmodule TRC.MixProject do
       {:broadway_rabbitmq, "~> 0.7.0"},
       {:amqp, "~> 3.1"},
       {:nimble_csv, "~> 1.1"},
-      {:scrivener_ecto, "~> 2.0"}
+      {:scrivener_ecto, "~> 2.0"},
+      {:nebulex, "~> 2.3.1"},
+      {:shards, "~> 1.0"},
+      {:decorator, "~> 1.4"},
+      {:nebulex_redis_adapter, "~> 2.2"},
+      {:crc, "~> 0.10"}
     ]
   end
 

@@ -1,5 +1,10 @@
 import Config
 
+# Helper
+to_int = fn var, default ->
+  if val = System.get_env(var), do: String.to_integer(val), else: default
+end
+
 # Configure your database
 config :trc, TRC.Repo,
   username: "postgres",
@@ -59,3 +64,21 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+# Cache
+config :trc, TRC.Cache,
+  stats: true,
+  gc_interval: to_int.("CACHE_GC_INTERVAL", :timer.hours(12)),
+  max_size: to_int.("CACHE_MAX_SIZE", 1_000_000),
+  gc_cleanup_min_timeout: to_int.("CACHE_MIN_CLEANUP_INTERVAL", 10_000),
+  gc_cleanup_max_timeout: to_int.("CACHE_MAX_CLEANUP_INTERVAL", 600_000)
+
+config :trc, TRC.Cache, adapter: NebulexRedisAdapter,
+  conn_opts: [
+    # Redix options
+    host: "127.0.0.1",
+    port: 6379
+  ],
+  socket_opts: [
+    verify: :verify_none
+  ]
