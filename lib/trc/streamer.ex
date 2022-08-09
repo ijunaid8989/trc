@@ -53,8 +53,6 @@ defmodule TRC.Streamer do
       Events.publish(event, payload)
     end)
     |> Stream.run()
-
-    move_source(path)
   end
 
   defp parse_event("twitch", item) do
@@ -129,8 +127,4 @@ defmodule TRC.Streamer do
 
   defp true_false("True"), do: true
   defp true_false(_), do: false
-
-  defp move_source(path) do
-    File.rename()
-  end
 end

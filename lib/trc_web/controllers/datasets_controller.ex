@@ -4,4 +4,7 @@ defmodule TRCWeb.DatasetsController do
   alias TRC.Datasets
 
   action_fallback TRCWeb.FallbackController
+
+  def index(conn, params) do
+  end
 end

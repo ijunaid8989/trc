@@ -7,6 +7,8 @@ defmodule TRCWeb.Router do
 
   scope "/api", TRCWeb do
     pipe_through :api
+
+    get("/datasets", DatasetsController, :index)
   end
 
   # Enables LiveDashboard only for development

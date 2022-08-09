@@ -3,8 +3,6 @@ defmodule TRC.Events.MessageEncoder do
   Encapsulates encoding integration event message.
   """
 
-  # alias Janus.Accounts.Account Alias Twitch here
-
   def encode!(event, payload) do
     Jason.encode!(%{
       event: event,
