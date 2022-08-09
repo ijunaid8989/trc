@@ -9,7 +9,7 @@ defmodule TRC.QueryHelper.Paginate do
     page = repo.paginate(query, pagination_config)
 
     %{
-      items: page.entries,
+      items: eliminate_nils(page.entries),
       total: page.total_entries,
       page: page.page_number,
       limit: page.page_size,
@@ -25,5 +25,14 @@ defmodule TRC.QueryHelper.Paginate do
   defp to(page) do
     last_item = from(page) + page.page_size - 1
     if last_item > page.total_entries, do: page.total_entries, else: last_item
+  end
+
+  defp eliminate_nils(entries) do
+    Enum.map(entries, fn entry ->
+      for {k, v} <- Map.from_struct(entry) |> Map.delete(:__meta__),
+          v != nil,
+          into: %{},
+          do: {k, v}
+    end)
   end
 end
