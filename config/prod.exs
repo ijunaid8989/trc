@@ -47,3 +47,14 @@ config :logger, level: :info
 #       force_ssl: [hsts: true]
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
+
+config :trc, TRC.Cache,
+  adapter: NebulexRedisAdapter,
+  conn_opts: [
+    # Redix options
+    host: "127.0.0.1",
+    port: 6379
+  ],
+  socket_opts: [
+    verify: :verify_none
+  ]

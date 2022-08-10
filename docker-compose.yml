@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+    image: trc_app
+    entrypoint: "tail -f /dev/null"
+    environment:
+      DATABASE_HOST: trc
+      DATABASE_USER: postgres
+      DATABASE_PASS: postgres
+      REDIS_HOST: redis
+      REDIS_PORT: 6378
+      PORT: 4001
+    volumes:
+      - .:/opt/trc
+      - ~/.ssh:/root/.ssh
+    ports:
+      - "4001:4001"
+    depends_on:
+      - db
+    networks:
+      - trc_net
+  db:
+    image: postgres:10
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - trc_net
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6378:6378"
+    networks:
+      - trc_net
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+        - 5671:5671
+        - 15673:15673
+    volumes:
+        - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+        - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+        - trc_net
+
+volumes:
+  pgdata:
+networks:
+  trc_net:
