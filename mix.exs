@@ -54,7 +54,8 @@ defmodule TRC.MixProject do
       {:decorator, "~> 1.4"},
       {:nebulex_redis_adapter, "~> 2.2"},
       {:crc, "~> 0.10"},
-      {:mock, "~> 0.3.5", only: :test, runtime: false}
+      {:mock, "~> 0.3.5", only: :test, runtime: false},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
     ]
   end
 
