@@ -11,7 +11,6 @@ defmodule TRC.Events.MessageTrasnform do
     |> Enum.each(fn %Message{data: data} = message ->
       do_changeset(data.payload, data.event)
       |> Repo.insert()
-      |> IO.inspect()
       |> case do
         {:ok, _message} -> :ok
         _error -> Message.failed(message, "missing-column-fields")

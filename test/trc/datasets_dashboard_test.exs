@@ -76,6 +76,10 @@ defmodule TRC.Datasets.DatasetsDashboardTest do
 
       assert length(items) == 1
 
+      %{items: items, total: _total} = DatasetsDashboard.all(%{"topic" => "memegen"})
+
+      assert length(items) == 1
+
       %{
         alternate_text: "some",
         archived_url: "some",
