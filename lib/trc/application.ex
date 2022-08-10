@@ -18,7 +18,7 @@ defmodule TRC.Application do
       {Phoenix.PubSub, name: TRC.PubSub},
       TRCWeb.Endpoint,
       {publisher, Keyword.put_new(publisher_opts, :name, publisher)},
-      {TRC.Events, [publisher: publisher]},
+      {TRC.Events, [publisher: publisher]}
       # TRC.Streamer,
       # Supervisor.child_spec({TRC.Events.BroadwayConsumer, "twitch"}, id: :twitch)
       # Supervisor.child_spec({TRC.Events.BroadwayConsumer, "memegen"}, id: :memegen),

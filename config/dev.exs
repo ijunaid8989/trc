@@ -73,7 +73,8 @@ config :trc, TRC.Cache,
   gc_cleanup_min_timeout: to_int.("CACHE_MIN_CLEANUP_INTERVAL", 10_000),
   gc_cleanup_max_timeout: to_int.("CACHE_MAX_CLEANUP_INTERVAL", 600_000)
 
-config :trc, TRC.Cache, adapter: NebulexRedisAdapter,
+config :trc, TRC.Cache,
+  adapter: NebulexRedisAdapter,
   conn_opts: [
     # Redix options
     host: "127.0.0.1",

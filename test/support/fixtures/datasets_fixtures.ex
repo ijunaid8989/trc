@@ -27,7 +27,7 @@ defmodule TRC.DatasetsFixtures do
       })
       |> TRC.Datasets.create_twitch()
 
-    [twitch: twitch]
+    twitch
   end
 
   @doc """
@@ -84,7 +84,7 @@ defmodule TRC.DatasetsFixtures do
           eta2: 4.5
         },
         run: 42,
-        transverse_momentum: %{
+        transverse_momemtum: %{
           pt1: 2.9,
           pt2: 2.9
         }
