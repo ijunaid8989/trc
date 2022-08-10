@@ -2,7 +2,7 @@ defmodule TRC.QueryHelper.Paginate do
   def paginate(query, repo, params, options \\ []) do
     pagination_config = %{
       page: params["page"] || 1,
-      page_size: params["limit"] || 50,
+      page_size: params["page_size"] || 50,
       options: options
     }
 
@@ -12,7 +12,7 @@ defmodule TRC.QueryHelper.Paginate do
       items: eliminate_nils(page.entries),
       total: page.total_entries,
       page: page.page_number,
-      limit: page.page_size,
+      page_size: page.page_size,
       from: from(page),
       to: to(page)
     }
