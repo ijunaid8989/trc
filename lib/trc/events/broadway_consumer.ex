@@ -14,7 +14,7 @@ defmodule TRC.Events.BroadwayConsumer do
       producer: [
         module:
           {BroadwayRabbitMQ.Producer,
-           queue: queue, bindings: [{exchange, []}], connection: connection},
+           queue: queue, bindings: [{exchange, []}], connection: connection, on_failure: :reject},
         concurrency: 1
       ],
       processors: [

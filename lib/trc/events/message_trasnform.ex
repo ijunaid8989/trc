@@ -2,9 +2,9 @@ defmodule TRC.Events.MessageTrasnform do
   alias Broadway.Message
   alias TRC.Repo
 
-  alias TRC.Datasets.Twitch
-  alias TRC.Datasets.MemeGen
   alias TRC.Datasets.CollisionElectron
+  alias TRC.Datasets.MemeGen
+  alias TRC.Datasets.Twitch
 
   def transform(messages) do
     messages

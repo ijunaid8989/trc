@@ -3,8 +3,8 @@ defmodule TRC.Datasets.DatasetsDashboardTest do
 
   import TRC.DatasetsFixtures
 
-  alias TRC.Datasets.DatasetsDashboard
   alias TRC.Cache
+  alias TRC.Datasets.DatasetsDashboard
 
   setup do
     _ = Cache.flush()

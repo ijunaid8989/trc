@@ -1,8 +1,8 @@
 defmodule TRCWeb.DatasetsController do
   use TRCWeb, :controller
 
-  alias TRC.Datasets.DatasetsDashboard
   alias TRC.Dataset.Request
+  alias TRC.Datasets.DatasetsDashboard
 
   action_fallback TRCWeb.FallbackController
 

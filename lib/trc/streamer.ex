@@ -25,7 +25,7 @@ defmodule TRC.Streamer do
     {:noreply, state}
   end
 
-  defp datasets() do
+  defp datasets do
     @datasets
     |> Enum.each(fn dataset ->
       event(dataset)
