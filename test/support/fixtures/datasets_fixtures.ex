@@ -27,7 +27,7 @@ defmodule TRC.DatasetsFixtures do
       })
       |> TRC.Datasets.create_twitch()
 
-    twitch
+    [twitch: twitch]
   end
 
   @doc """
@@ -47,7 +47,7 @@ defmodule TRC.DatasetsFixtures do
       })
       |> TRC.Datasets.create_meme_gen()
 
-    meme_gen
+    [meme_gen: meme_gen]
   end
 
   @doc """
@@ -91,6 +91,6 @@ defmodule TRC.DatasetsFixtures do
       })
       |> TRC.Datasets.create_collision_electron()
 
-    collision_electron
+    [collision_electron: collision_electron]
   end
 end

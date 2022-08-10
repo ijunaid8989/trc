@@ -12,8 +12,8 @@ defmodule TRC.Application do
 
     children = [
       TRC.Repo,
-      TRC.Cache,
       TRC.Cache.Local,
+      TRC.Cache,
       TRCWeb.Telemetry,
       {Phoenix.PubSub, name: TRC.PubSub},
       TRCWeb.Endpoint,

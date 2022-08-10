@@ -24,6 +24,7 @@ config :trc, TRCWeb.Endpoint,
 config :logger, level: :warn
 
 config :trc, TRC.Cache,
+  adapter: Nebulex.Adapters.Local,
   stats: true,
   gc_interval: :timer.hours(12)
 
