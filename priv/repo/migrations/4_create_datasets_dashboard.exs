@@ -67,7 +67,7 @@ defmodule TRC.Repo.Migrations.CreateDatasetsDashboard do
           public.memegen AS meme
         UNION ALL
         SELECT
-          'collision',
+          'collisionelectron',
           collision.id,
           collision.oid,
           NULL AS channel,
