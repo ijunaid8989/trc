@@ -22,7 +22,9 @@ defmodule TRC.Application do
       # TRC.Streamer,
       Supervisor.child_spec({TRC.Events.BroadwayConsumer, "twitch"}, id: :twitch),
       Supervisor.child_spec({TRC.Events.BroadwayConsumer, "memegen"}, id: :memegen),
-      Supervisor.child_spec({TRC.Events.BroadwayConsumer, "collisionelectron"}, id: :collisionelectron)
+      Supervisor.child_spec({TRC.Events.BroadwayConsumer, "collisionelectron"},
+        id: :collisionelectron
+      )
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
